@@ -41,6 +41,13 @@ public class StaticDynamicArrayImplementation {
 	{
 		return stack[top];
 	}
+	public void display()
+	{
+		for(int i : stack)
+		{
+		System.out.println(i);
+		}
+	}
 	public static void main(String[] args) {
 		StaticDynamicArrayImplementation st = new StaticDynamicArrayImplementation();
 		st.push(34);st.push(108);
@@ -49,7 +56,8 @@ public class StaticDynamicArrayImplementation {
 		System.out.println(st.isEmpty());
 		System.out.println(st.isFull());
 		System.out.println(st.peek());
-		System.out.println(st.pop());	
+		System.out.println(st.pop());
+		st.display();
 		}
 	}
 	
