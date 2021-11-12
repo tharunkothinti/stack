@@ -2,64 +2,59 @@
 package stack;
 
 public class StaticDynamicArrayImplementation {
-	private int[] object;
 	private int top;
-	private int stackSize = 4;
+	private int capacity;
+	private int[] stack;
 	StaticDynamicArrayImplementation()
 	{
-		stackSize = 1;
 		top = -1;
-		object = new int[stackSize];
+		capacity = 10;
+		stack = new int[capacity];
 	}
-	public int isEmpty()
+	public boolean isEmpty()
 	{
-		if(top == -1)
-		{
-			System.out.println("stack is empty");
-		}
-		return 0;
+		return top == -1;
 	}
-	public int isFull()
+	public boolean isFull() 
 	{
-		if(top == stackSize -1)
+		return top == capacity-1;
+	}
+	public int push(int data)
+	{
+		if(isFull()) 
 		{
-			System.out.println("stack is full");
+			System.out.println("Stack is Full");
+			
 		}
-		return 0;
+		return stack[++top]=data;
+		
 	}
 	public int pop()
 	{
-		return object[top];
-	}
-	public void push(int item)
-	{
-		if(top >= stackSize -1)
-			resize();
-		object[++top]= item;
-	}
-	
-	private void resize() {
-		int[] temp = object;
-		stackSize = stackSize *2;
-		object = new int[stackSize];
-		for(int i = 0;i <= top;i++)
+		if(isEmpty()) 
 		{
-			object[i]= temp[i];
+			System.out.println("stack is empty");
 		}
-		
+		return stack[top--];
+	}
+	public int peek()
+	{
+		return stack[top];
 	}
 	public static void main(String[] args) {
 		StaticDynamicArrayImplementation st = new StaticDynamicArrayImplementation();
-		st.push(34);st.push(787);
-		st.push(787);st.push(34);
-		st.push(787);st.push(34);
-		st.push(787);st.push(12);
-		System.out.println(st.pop());
-		System.out.println(st.stackSize);
-			
-			
-		
+		st.push(34);st.push(108);
+		st.push(01);st.push(92);
+		st.push(37);st.push(22);
+		System.out.println(st.isEmpty());
+		System.out.println(st.isFull());
+		System.out.println(st.peek());
+		System.out.println(st.pop());	
 		}
 	}
+	
+
+	
+	
 
 
